@@ -18,11 +18,8 @@
 </jsp:useBean>
 <!-- 텍스트필드에 적은 내용들을 빈즈에다가 저장하겠다, 자바 빈의 필드명과 텍스트필드의 name값이 같아야만 가능함 -->
 <%
-	mbean.setHobby(str);
-	MemberDAO mdao = new MemberDAO();
-	//insertMember 함수호출
-	mdao.insertMember(mbean);
-	//회원가입이 되었다면 회원정보를 보여주는 페이지로 이동시키고 싶다.
+	mbean.setId(id);
+	mbean.setPwd(pw);
 	response.sendRedirect("MemberArray.jsp");
 %>
 </body>
