@@ -5,19 +5,49 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script type = "text/javascript">
+	function check() {
+		if (!document.memberinfo.id.value) {
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		if (!document.memberinfo.pw.value) {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		
+		if (!document.memberinfo.gender.value) {
+			alert("성별을 입력하세요.");
+			return false;
+		}
+		
+		if (!document.memberinfo.zipcode.value) {
+			alert("우편번호를 입력하세요.");
+			return false;
+		}
+		
+		if(document.memberinfo.birth.value.length > 7){
+			alert("생년월일은 6자리입니다.");
+			return false;
+		}
+	}
+</script>
+
 </head>
 <body>
-<form>
+<form action = "memberProc.jsp" method = "post" name = "memberinfo" onsubmit = "return check()">
 	<div>
-		<table>
+		<table border = "1">
 			<tr>
 				<td>id : </td>
 				<td><input type = "text" name = "id"></td>
-				<td><input type = "button" onclick = "location.href = 'idCheck.jsp'" value = "id 중복확인"></td>
+				<td align = "right">
+					<input type = "button" onclick = "location.href = 'idCheck.jsp'" value = "id 중복확인">
+				</td>
 			</tr>
 			<tr>
 				<td>pw : </td>
-				<td colspan = "2"><input type = "text" name = "pw"></td>
+				<td colspan = "2"><input type = "password" name = "pw"></td>
 			</tr>
 			<tr>
 				<td>name : </td>
@@ -25,7 +55,10 @@
 			</tr>
 			<tr>
 				<td>gender : </td>
-				<td colspan = "2"><input type = "text" name = "gender"></td>
+				<td colspan = "2">
+					<input type="radio" name="gender" value="M">남
+					<input type="radio" name="gender" value="F">여
+				</td>
 			</tr>
 			<tr>
 				<td>email : </td>
@@ -38,7 +71,9 @@
 			<tr>
 				<td>zipcode : </td>
 				<td><input type = "text" name = "zipcode"></td>
-				<td><button>우편번호 검색</button></td>
+				<td align = "right">
+					<input type = "button" onclick = "location.href = 'zip.jsp'" value = "우편번호 검색">
+				</td>
 			</tr>
 			<tr>
 				<td>address : </td>
@@ -54,7 +89,8 @@
 			</tr>
 			<tr>
 				<td colspan = "3" align = "right">
-				<input type = "reset" value = "다시쓰기">
+					<input type = "submit" value = "회원가입">
+					<input type = "reset" value = "다시쓰기">
 				</td>
 			</tr>
 		</table>

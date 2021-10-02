@@ -72,5 +72,4 @@ public class MemberBean {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	
 }

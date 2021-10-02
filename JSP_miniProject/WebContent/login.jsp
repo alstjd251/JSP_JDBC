@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td colspan = "2">
-					<input type = "submit" value = "login">
+					<input type = "submit" value = "로그인">
 					<input type = "button" onclick = "location.href = 'member.jsp'" value = "회원가입">
 				</td>
 			</tr>
