@@ -28,8 +28,6 @@
 			out.println("는 사용 가능한 ID입니다.");
 		}
 		%>
-		<br><br>
-		<a href = "#" onclick = "self.close()">닫기</a>
 	</div>
 </form>
 </body>

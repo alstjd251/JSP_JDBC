@@ -16,12 +16,12 @@
 			alert("비밀번호를 입력하세요.");
 			return false;
 		}
-		
+		/*
 		if (!document.memberinfo.gender.value) {
 			alert("성별을 입력하세요.");
 			return false;
 		}
-		
+		*/
 		if (!document.memberinfo.zipcode.value) {
 			alert("우편번호를 입력하세요.");
 			return false;
@@ -36,7 +36,6 @@
 	function idCheck(id) {
 		if (id == "") {
 			alert("아이디를 입력하세요");
-			document.regFrm.id.focus();
 			return;
 		}
 		url = "idCheck.jsp?id=" + id;
@@ -68,7 +67,7 @@
 			<tr>
 				<td>gender : </td>
 				<td colspan = "2">
-					<input type="radio" name="gender" value="M">남
+					<input type="radio" name="gender" value="M" checked = "checked">남
 					<input type="radio" name="gender" value="F">여
 				</td>
 			</tr>
@@ -101,6 +100,7 @@
 			</tr>
 			<tr>
 				<td colspan = "3" align = "right">
+					<input type = "button" value = "로그인" onclick = "javascript:location.href='login.jsp'">
 					<input type = "submit" value = "회원가입">
 					<input type = "reset" value = "다시쓰기">
 				</td>
