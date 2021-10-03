@@ -1,8 +1,6 @@
 package beans;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -10,10 +8,8 @@ import javax.sql.DataSource;
 
 public class DBConnectionMgr {
 	Connection con;
-	PreparedStatement pstmt;
-	ResultSet rs;
 	
-	public void getCon() {
+	public Connection getCon() {
 		try {
 			Context ctx = new InitialContext();
 			Context env = (Context)ctx.lookup("java:comp/env");
@@ -23,5 +19,6 @@ public class DBConnectionMgr {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return con;
 	}
 }

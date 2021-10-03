@@ -11,6 +11,7 @@
 			alert("아이디를 입력하세요.");
 			return false;
 		}
+		
 		if (!document.memberinfo.pw.value) {
 			alert("비밀번호를 입력하세요.");
 			return false;
@@ -31,10 +32,21 @@
 			return false;
 		}
 	}
+
+	function idCheck(id) {
+		if (id == "") {
+			alert("아이디를 입력하세요");
+			document.regFrm.id.focus();
+			return;
+		}
+		url = "idCheck.jsp?id=" + id;
+		window.open(url, "IDCheck", "width=300, height=150");
+	}
 </script>
 
 </head>
 <body>
+<h3>회원가입</h3>
 <form action = "memberProc.jsp" method = "post" name = "memberinfo" onsubmit = "return check()">
 	<div>
 		<table border = "1">
@@ -42,12 +54,12 @@
 				<td>id : </td>
 				<td><input type = "text" name = "id"></td>
 				<td align = "right">
-					<input type = "button" onclick = "location.href = 'idCheck.jsp'" value = "id 중복확인">
+					<input type = "button" onclick = "idCheck(this.form.id.value)" value = "id 중복확인">
 				</td>
 			</tr>
 			<tr>
 				<td>pw : </td>
-				<td colspan = "2"><input type = "password" name = "pw"></td>
+				<td colspan = "2"><input type = "password" name = "pwd"></td>
 			</tr>
 			<tr>
 				<td>name : </td>

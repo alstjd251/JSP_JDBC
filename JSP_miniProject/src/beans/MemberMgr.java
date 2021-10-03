@@ -1,31 +1,56 @@
 package beans;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class MemberMgr {
 	DBConnectionMgr dbcmgr = new DBConnectionMgr();
+	PreparedStatement pstmt;
+	ResultSet rs;
+	Connection con;
 	
 	public void insertMember(MemberBean mbean) {
 		try {
-			dbcmgr.getCon();
+			con = dbcmgr.getCon();
+			
 			String sql = "insert into pmember values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
-			dbcmgr.pstmt = dbcmgr.con.prepareStatement(sql);
+			pstmt = dbcmgr.con.prepareStatement(sql);
 			
-			dbcmgr.pstmt.setString(1, mbean.getId());
-			dbcmgr.pstmt.setString(2, mbean.getPwd());
-			dbcmgr.pstmt.setString(3, mbean.getName());
-			dbcmgr.pstmt.setString(4, mbean.getGender());
-			dbcmgr.pstmt.setString(5, mbean.getEmail());
-			dbcmgr.pstmt.setString(6, mbean.getBirth());
-			dbcmgr.pstmt.setString(7, mbean.getZipcode());
-			dbcmgr.pstmt.setString(8, mbean.getAddress());
-			dbcmgr.pstmt.setString(9, mbean.getHobby());
-			dbcmgr.pstmt.setString(10, mbean.getJob());
+			pstmt.setString(1, mbean.getId());
+			pstmt.setString(2, mbean.getPwd());
+			pstmt.setString(3, mbean.getName());
+			pstmt.setString(4, mbean.getGender());
+			pstmt.setString(5, mbean.getEmail());
+			pstmt.setString(6, mbean.getBirth());
+			pstmt.setString(7, mbean.getZipcode());
+			pstmt.setString(8, mbean.getAddress());
+			pstmt.setString(9, mbean.getHobby());
+			pstmt.setString(10, mbean.getJob());
 			
-			dbcmgr.pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
-			dbcmgr.con.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean checkId(String id) {
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = dbcmgr.getCon();
+			sql = "select id from pmember where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			flag = rs.next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
 }
+
