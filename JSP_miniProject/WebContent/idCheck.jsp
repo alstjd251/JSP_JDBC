@@ -11,14 +11,14 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="mgr" class="beans.MemberMgr" />
+<jsp:useBean id="mmgr" class="beans.MemberMgr" />
 
 <h3>아이디 중복확인</h3>
 <form>
 	<div>
 		<%
 		String id = request.getParameter("id");
-		boolean result = mgr.checkId(id);
+		boolean result = mmgr.checkId(id);
 		%>
 		<b><%=id%></b>
 		<%

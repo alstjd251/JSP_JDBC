@@ -12,22 +12,22 @@
 			return false;
 		}
 		
-		if (!document.memberinfo.pw.value) {
+		if (!document.memberinfo.pwd.value) {
 			alert("비밀번호를 입력하세요.");
 			return false;
 		}
-		/*
+		
 		if (!document.memberinfo.gender.value) {
 			alert("성별을 입력하세요.");
 			return false;
 		}
-		*/
+		
 		if (!document.memberinfo.zipcode.value) {
 			alert("우편번호를 입력하세요.");
 			return false;
 		}
 		
-		if(document.memberinfo.birth.value.length > 7){
+		if(document.memberinfo.birth.value.length != 6){
 			alert("생년월일은 6자리입니다.");
 			return false;
 		}
@@ -39,12 +39,20 @@
 			return;
 		}
 		url = "idCheck.jsp?id=" + id;
-		window.open(url, "IDCheck", "width=300, height=150");
+		window.open(url, "", "width=300, height=150");
+	}
+	
+	function zipSearch(){
+		url = "zipSearch.jsp?search=n";
+		window.open(url, "", "width=500, height=300")
 	}
 </script>
 
 </head>
 <body>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <h3>회원가입</h3>
 <form action = "memberProc.jsp" method = "post" name = "memberinfo" onsubmit = "return check()">
 	<div>
@@ -67,7 +75,7 @@
 			<tr>
 				<td>gender : </td>
 				<td colspan = "2">
-					<input type="radio" name="gender" value="M" checked = "checked">남
+					<input type="radio" name="gender" value="M">남
 					<input type="radio" name="gender" value="F">여
 				</td>
 			</tr>
@@ -83,7 +91,7 @@
 				<td>zipcode : </td>
 				<td><input type = "text" name = "zipcode"></td>
 				<td align = "right">
-					<input type = "button" onclick = "location.href = 'zip.jsp'" value = "우편번호 검색">
+					<input type = "button" onclick = "zipSearch()" value = "우편번호 검색">
 				</td>
 			</tr>
 			<tr>

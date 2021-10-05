@@ -6,23 +6,21 @@
 <meta charset="UTF-8">
 <title>login</title>
 <%
-request.setCharacterEncoding("UTF-8");
-String id = (String) session.getAttribute("idKey"); //세션에서 idkey를 가져온다
+	request.setCharacterEncoding("UTF-8");
+	String id = (String)session.getAttribute("idKey");
 %>
 
 <script type="text/javascript">
 	function loginCheck() {
 		if (document.log.id.value == "") {
 			alert("아이디를 입력해 주세요.");
-			document.log.id.focus();
 			return;
 		}
 		if (document.log.pwd.value == "") {
 			alert("비밀번호를 입력해 주세요.");
-			document.log.pwd.focus();
 			return;
 		}
-		document.log.submit();
+		//document.log.submit();
 	}
 </script>
 </head>
@@ -50,7 +48,7 @@ String id = (String) session.getAttribute("idKey"); //세션에서 idkey를 가�
 					</tr>
 					<tr>
 						<td colspan="2">
-						<input type="submit" value="로그인">
+						<input type="submit" value="로그인" onclick = "loginCheck()">
 						<input type="button" onclick="location.href = 'member.jsp'" value="회원가입" onclick="loginCheck()">
 						</td>
 					</tr>
