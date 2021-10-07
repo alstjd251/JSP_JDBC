@@ -23,7 +23,7 @@
 	MemberBean mbean = mmgr.getMember(id); 
 %>
 <h3>회원가입</h3>
-<form action = "memberUpdateProc.jsp" method = "post" name = "changeinfo" onsubmit = "return check()">
+<form action = "memberUpdateProc.jsp" method = "post" name = "memberinfo" onsubmit = "return check()">
 	<div>
 		<table border = "1">
 			<tr>
