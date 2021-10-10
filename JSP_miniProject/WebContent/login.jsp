@@ -30,6 +30,7 @@
 	%>
 	<input type = "button" onclick="location.href = 'logout.jsp'" value = "로그아웃">
 	<input type = "button" onclick="location.href = 'memberUpdate.jsp'" value = "회원수정">
+	<input type = "button" onclick="location.href = 'memberDelete.jsp'" value = "회원탈퇴">
 	<%
 	} else {
 		id = request.getParameter("id");

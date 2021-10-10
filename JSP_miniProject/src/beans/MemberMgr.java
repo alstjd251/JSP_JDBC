@@ -149,6 +149,20 @@ public class MemberMgr {
 		} 
 		return vzip;
 	}
+	public void deleteMember(String id) {
+		try {
+			con = dbcmgr.getCon();
+			String sql = "delete from pmember where id = ?";
+			pstmt = dbcmgr.con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			pstmt.execute();
+			con.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 
