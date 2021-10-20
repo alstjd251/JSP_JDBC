@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <script type = "text/javascript">
+	window.onload = function(){
+		document.getElementById("mem").disabled = true;
+	}
 	function check() {
 		if (!document.memberinfo.id.value) {
 			alert("아이디를 입력하세요.");
@@ -40,6 +43,7 @@
 		}
 		url = "idCheck.jsp?id=" + id;
 		window.open(url, "", "width=300, height=150");
+		document.getElementById("mem").disabled = false;
 	}
 	
 	function zipSearch(){
@@ -109,7 +113,7 @@
 			<tr>
 				<td colspan = "3" align = "right">
 					<input type = "button" value = "로그인" onclick = "javascript:location.href='login.jsp'">
-					<input type = "submit" value = "회원가입">
+					<input type = "submit" value = "회원가입" id = "mem">
 					<input type = "reset" value = "다시쓰기">
 				</td>
 			</tr>
